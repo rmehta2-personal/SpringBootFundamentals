@@ -114,6 +114,15 @@ public class StudentRepoTest {
     public void testFindByName() {
         Student newManoj = new Student("Manoj");
         studentRepo.save(newManoj);
+        List<Student> manojes = studentRepo.findByNameLike("Manoj");
+
+        assertEquals(1, manojes.size());
+    }
+
+    @Test
+    public void testFindByNameLike() {
+        Student newManoj = new Student("Manoj");
+        studentRepo.save(newManoj);
         List<Student> manojes = studentRepo.findByNameLike("%Manoj%");
 
         assertEquals(2, manojes.size());
