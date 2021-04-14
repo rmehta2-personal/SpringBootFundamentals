@@ -1,13 +1,17 @@
 package ttl.larku.dao.inmemory;
 
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
+import ttl.larku.dao.BaseDAO;
+import ttl.larku.domain.Course;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import ttl.larku.dao.BaseDAO;
-import ttl.larku.domain.Course;
-
+@Component
+@Primary // This will be the default type used to instantiate an Atuowired attribute of this type
 public class InMemoryCourseDAO implements BaseDAO<Course> {
 
     private Map<Integer, Course> courses = new HashMap<Integer, Course>();

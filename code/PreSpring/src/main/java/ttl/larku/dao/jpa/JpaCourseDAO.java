@@ -1,18 +1,23 @@
 package ttl.larku.dao.jpa;
 
+import org.springframework.stereotype.Component;
+import ttl.larku.dao.BaseDAO;
+import ttl.larku.domain.Course;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import ttl.larku.dao.BaseDAO;
-import ttl.larku.domain.Course;
-
+@Component
 public class JpaCourseDAO implements BaseDAO<Course> {
 
     private Map<Integer, Course> courses = new HashMap<Integer, Course>();
     private static int nextId = 0;
 
+    public JpaCourseDAO() {
+        int i = 0;
+    }
     public void update(Course updateObject) {
         if (courses.containsKey(updateObject.getId())) {
             courses.put(updateObject.getId(), updateObject);

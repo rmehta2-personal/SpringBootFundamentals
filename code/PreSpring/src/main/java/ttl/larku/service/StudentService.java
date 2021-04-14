@@ -1,7 +1,6 @@
 package ttl.larku.service;
 
 import ttl.larku.dao.BaseDAO;
-import ttl.larku.dao.inmemory.InMemoryStudentDAO;
 import ttl.larku.domain.Student;
 import ttl.larku.domain.Student.Status;
 
@@ -16,7 +15,8 @@ public class StudentService {
     private BaseDAO<Student> studentDAO;
 
     public StudentService() {
-        studentDAO = new InMemoryStudentDAO();
+        int i = 0;
+        //studentDAO = new InMemoryStudentDAO(); // set via Application context
     }
 
     public Student createStudent(String name, String phoneNumber, Status status) {

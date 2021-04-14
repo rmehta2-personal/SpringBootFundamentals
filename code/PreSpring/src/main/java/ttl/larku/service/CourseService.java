@@ -1,19 +1,30 @@
 package ttl.larku.service;
 
-import java.util.List;
-
-import org.springframework.stereotype.Service;
-
+import org.springframework.stereotype.Component;
 import ttl.larku.dao.BaseDAO;
-import ttl.larku.dao.MyFactory;
-import ttl.larku.dao.inmemory.InMemoryCourseDAO;
 import ttl.larku.domain.Course;
 
+import javax.annotation.Resource;
+import java.util.List;
+
+@Component // Tells spring to treat this class as a bean property
 public class CourseService {
 
+    /*
+     * @Autowired/@Resource:
+     * This is replacing the explicit setter call we had to make in case of StudentService in the LarkUConfig file.
+     * With this in place the setter of this attribute is not called, but sprint auto wires the instances.
+     * Ensure that at least one of the subclass of BaseDAO<Course> is annotated with @Component
+     * If multiple subclasses of BaseDAO<Course> is annotated with @Component then:
+     * 1. Make sure one of them is annotated with @Primary which tells spring the default type to create an instance of. OR
+     * 2. use @Resource instead of @Autowired
+     */
+    // @Autowired // This will instantiate the attribute with default (@Primary) derived type
+    @Resource(name="jpaCourseDAO")
     private BaseDAO<Course> courseDAO;
 
     public CourseService() {
+        int i = 0;
     }
 
     public Course createCourse(String code, String title) {

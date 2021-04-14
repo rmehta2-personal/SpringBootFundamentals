@@ -1,7 +1,5 @@
 package ttl.larku.dao;
 
-import java.util.ResourceBundle;
-
 import ttl.larku.dao.inmemory.InMemoryCourseDAO;
 import ttl.larku.dao.inmemory.InMemoryStudentDAO;
 import ttl.larku.dao.jpa.JpaCourseDAO;
@@ -10,6 +8,8 @@ import ttl.larku.domain.Course;
 import ttl.larku.domain.Student;
 import ttl.larku.service.CourseService;
 import ttl.larku.service.StudentService;
+
+import java.util.ResourceBundle;
 
 public class MyFactory {
 
@@ -25,8 +25,10 @@ public class MyFactory {
             String profile = bundle.getString("larku.profile.active");
             switch (profile) {
                 case "dev":
+                    System.out.println("Using InMemoryStudentDAO for profile "+profile);
                     return studentDAO = new InMemoryStudentDAO();
                 case "prod":
+                    System.out.println("Using JpaStudentDAO for profile "+profile);
                     return studentDAO = new JpaStudentDAO();
                 default:
                     throw new RuntimeException("No profile set");
