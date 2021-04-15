@@ -1,23 +1,28 @@
 package ttl.larku.service;
 
+import org.springframework.stereotype.Service;
 import ttl.larku.domain.ScheduledClass;
 import ttl.larku.domain.Student;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO - Need to make this into a bean
+@Service
 public class RegistrationService {
 
-    //TODO - something required here
+    @Resource(name = "courseService")
     private CourseService courseService;
+    @Resource(name = "studentService")
     private StudentService studentService;
+    @Resource(name = "classService")
     private ClassService classService;
 
     public RegistrationService() {
-        courseService = new CourseService();
-        studentService = new StudentService();
-        classService = new ClassService();
+        // Should not call the new keyword here. As they are configured with spring. Let the construction happen via springframework.
+//        courseService = new CourseService();
+//        studentService = new StudentService();
+//        classService = new ClassService();
     }
 
 

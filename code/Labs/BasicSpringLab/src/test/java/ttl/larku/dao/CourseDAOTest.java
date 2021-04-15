@@ -12,6 +12,8 @@ import ttl.larku.domain.ScheduledClass;
 import ttl.larku.domain.Student;
 import ttl.larku.jconfig.LarkUConfig;
 
+import javax.annotation.Resource;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -41,9 +43,7 @@ public class CourseDAOTest {
     private Student student1;
     private Student student2;
 
-    //TODO - Dependency Injection Using Annotations.
-    //Here you will need to supply the name for the Dependency
-    //you need to inject
+    @Resource(name = "courseDAO")
     private BaseDAO<Course> dao;
 
     @BeforeEach

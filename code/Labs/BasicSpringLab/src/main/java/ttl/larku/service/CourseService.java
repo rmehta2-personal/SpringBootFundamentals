@@ -7,7 +7,6 @@ import java.util.List;
 
 public class CourseService {
 
-    //TODO - Dependency Injection needed here.
     private BaseDAO<Course> courseDAO;
 
     public Course createCourse(String code, String title) {

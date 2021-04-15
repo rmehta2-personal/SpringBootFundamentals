@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import ttl.larku.dao.BaseDAO;
-import ttl.larku.dao.MyFactory;
+import ttl.larku.dao.inmemory.InMemoryStudentDAO;
 import ttl.larku.domain.Student;
 import ttl.larku.service.StudentService;
 
@@ -17,7 +17,8 @@ public class LarkUConfig {
 //    <bean id="inMemoryStudentDao" class="ttl.larku.dao.inmemory.InMemoryStudentDAO"/>
     @Bean
     public BaseDAO<Student> inMemoryStudentDao() {
-        return MyFactory.studentDAO();
+//        return MyFactory.studentDAO();
+        return new InMemoryStudentDAO();
     }
 
 //    <bean id="studentService" class="ttl.larku.service.StudentService">
